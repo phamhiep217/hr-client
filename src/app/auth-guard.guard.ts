@@ -15,9 +15,9 @@ export class AuthGuardGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {   
     if(this.serLogin.getLogin())
       return true;
-    if(this.router.routerState.snapshot.url === '') {
-      this.serLogin.setLogin(true);
-      this.router.navigate([state.url]);
-    }
+    // if(this.router.routerState.snapshot.url === '') {
+    //   this.serLogin.setLogin(true);
+    //   this.router.navigate([state.url]);
+    // }
   }
 }

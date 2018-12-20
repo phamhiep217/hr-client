@@ -47,7 +47,7 @@ export const routes: Routes = [
 
   {
     path: '',
-    canActivate: [AuthGuardGuard],
+   // canActivate: [AuthGuardGuard],
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'

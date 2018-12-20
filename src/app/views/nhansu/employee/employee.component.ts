@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { EmployeeService } from './employee.service';
+import { ActivatedRoute } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -22,7 +24,12 @@ export class EmployeeComponent implements OnInit {
     {headerName: 'Trạng Thái', field: 'EmpStatus'}
   ];
   rowData : any;
-  constructor(private serEmployee:EmployeeService) { }
+  lstEmps : any;
+  constructor(
+    private serEmployee:EmployeeService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ){}
 
   ngOnInit() {
     this.rowData = [];
@@ -30,19 +37,10 @@ export class EmployeeComponent implements OnInit {
     this.serEmployee.getEmployees()
     .then(res => {
       if(res){
+        this.lstEmps = res;
         for ( let i=0 ; i < res.length ; i++)
         {
-          let objEmp = {
-            EmpCode: res[i].EmpCode, 
-            EmpName: res[i].EmpName, 
-            EmpTimekeepCode: res[i].EmpTimekeepCode,
-            EmpTimekeepName: res[i].EmpTimekeepName,
-            EmpGender: res[i].EmpGender,
-            FK_CompCode: res[i].FK_CompCode,
-            FK_AreaCode:res[i].FK_AreaCode,
-            FK_DeptCode: res[i].FK_DeptCode,
-            EmpStatus: res[i].EmpStatus
-          }
+          let objEmp = res[i];
           dataEmp.push(objEmp);
         } 
         this.rowData = dataEmp;
@@ -56,7 +54,8 @@ export class EmployeeComponent implements OnInit {
         const selectedData = selectedNodes.map( node => node.data );
   }
   
-  onrowDoubleClicked() {
-    
+  onrowDoubleClicked(event) {
+    console.log(event.data);
+    this.router.navigate(['nhansu/emptail',{data:event.data}]);
   }
 }

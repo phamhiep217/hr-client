@@ -41,8 +41,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { LoginService } from './views/login/login.service';
-import { DanhmucComponent } from './views/danhmuc/danhmuc.component';
 import {AuthGuardGuard} from './auth-guard.guard';
+
+//Material Angular
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   imports: [
@@ -59,7 +62,8 @@ import {AuthGuardGuard} from './auth-guard.guard';
     ChartsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
@@ -67,8 +71,7 @@ import {AuthGuardGuard} from './auth-guard.guard';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent,
-    DanhmucComponent,
+    RegisterComponent
   ],
   providers: [{
     provide: LocationStrategy,

@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-sm-12">
+    <form (ngSubmit)="onAddDegree();" [formGroup]="formDegree">
+      <div class="card-header">
+        Trình độ, bằng cấp
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-select placeholder="Trình độ đào tạo" formControlName='trinhdo'>
+                <mat-option *ngFor="let dg of lstDegree" [value]="dg.code">
+                  {{dg.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field>
+              <input matInput placeholder="Nơi đào tạo" formControlName='noidaotao'>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field>
+              <input matInput placeholder="Khoa" formControlName='khoa'>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field>
+              <input matInput placeholder="Chuyên ngành" formControlName='chuyennganh'>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field>
+              <input matInput [matDatepicker]="datenamtn" placeholder="Năm tốt nghiệp" formControlName='namtn'>
+              <mat-datepicker-toggle matSuffix [for]="datenamtn"></mat-datepicker-toggle>
+              <mat-datepicker #datenamtn startView="multi-year" (yearSelected)="chosenYearHandler($event,datenamtn)">
+              </mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-select placeholder="Xếp loại" formControlName='xeploai'>
+                <mat-option *ngFor="let rk of lstRanking" [value]="rk.code">
+                  {{rk.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="btn btn-success btn-md pull-right" (click)="onClose()" style="width:70px;margin-left: 5px;">Đóng</div>
+            <button class="btn btn-success btn-md pull-right" style="width:70px;">Lưu</button>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>

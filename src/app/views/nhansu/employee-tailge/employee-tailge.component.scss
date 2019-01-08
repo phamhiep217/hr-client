@@ -1,0 +1,24 @@
+.center-content{
+    text-align:center !important;
+}
+.ge-content {
+    margin-top: 15px; 
+}
+.td-ellip {
+    white-space: nowrap; 
+    //width: 50px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+th {
+    text-align: center;
+    
+}
+thead th {
+    vertical-align: middle;
+}

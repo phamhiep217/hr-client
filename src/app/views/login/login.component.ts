@@ -46,10 +46,10 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['dashboard']);
           }
         })
-        .catch(err=>console.log(err));
+        .catch(err=>console.log(err + ''));
         //window.location.assign('#/dashboard');
       }
-    }).catch(err => console.log(err));
+    }).catch(err => console.log(err + ''));
   }
 
  }

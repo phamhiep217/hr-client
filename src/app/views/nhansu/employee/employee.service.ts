@@ -6,9 +6,10 @@ import { Helps } from '../../../../utils/helps';
 @Injectable()
 
 export class EmployeeService {
-    constructor(private http: Http) {
-     }
-
+    degree : any;
+    constructor(
+        private http: Http,
+        ){}
     private postWrapper(url, body, isJson = true) {
         let options = {
             headers: new Headers({ 'Content-Type': 'application/json' })
@@ -18,11 +19,36 @@ export class EmployeeService {
             .toPromise()
             .then(res => res.json());
     }
-
     private getWrapper(url) {
         return this.http.get(Helps.prefixApi() + url)
             .toPromise()
             .then(res => res.json());
+    }
+
+    initDegree() {
+        this.degree = {
+            trinhdo:'',
+            noidaotao:'',
+            khoa:'',
+            chuyennganh:'',
+            namtn:'',
+            xeploai:''
+        }
+    }
+
+    setDegree(obj) {
+        this.degree = {
+            trinhdo:obj.trinhdo,
+            noidaotao:obj.noidaotao,
+            khoa:obj.khoa,
+            chuyennganh:obj.chuyennganh,
+            namtn:obj.namtn,
+            xeploai:obj.xeploai
+        }
+    }
+
+    getDegree() {
+        return this.degree;
     }
 
     getEmployees() {

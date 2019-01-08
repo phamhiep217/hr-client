@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { EmployeeService } from './employee.service';
-import { ActivatedRoute } from '@angular/router';
 import {Router} from '@angular/router';
 
 @Component({
@@ -27,7 +26,6 @@ export class EmployeeComponent implements OnInit {
   lstEmps : any;
   constructor(
     private serEmployee:EmployeeService,
-    private activatedRoute: ActivatedRoute,
     private router: Router
   ){}
 
@@ -55,7 +53,6 @@ export class EmployeeComponent implements OnInit {
   }
   
   onrowDoubleClicked(event) {
-    console.log(event.data);
     this.router.navigate(['nhansu/emptail',{data:event.data}]);
   }
 }

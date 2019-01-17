@@ -1,41 +1,44 @@
 <div class="row ge-content">
   <div class="col-lg-4 center-content">
-    <img src="assets/img/avatars/non-avatar.png" class="img-responsive center-block" width="200" height="200" />
+    <div>
+      <img src="assets/img/avatars/non-avatar.png" class="img-responsive center-block" width="200" height="200" />
+      <span style="position:relative; right:36px; bottom:-90px;" class="img-icon" (click)="changeImg();"><i class="icon-picture fa-2x" ></i></span>
+    </div>
     <p></p>
     <div class="row">
       <div class="col-sm-4">Mã Công</div>
       <div class="col-sm-1">|</div>
-      <div class="col-sm-7 td-ellip">8</div>
+      <div class="col-sm-7 td-ellip">{{maCC}}</div>
     </div>
     <hr>
     <div class="row">
       <div class="col-sm-4">Tên</div>
       <div class="col-sm-1">|</div>
-      <div class="col-sm-7 td-ellip">Phạm Đức Hiệp</div>
+      <div class="col-sm-7 td-ellip">{{tenCC}}</div>
     </div>
     <hr>
     <div class="row">
       <div class="col-sm-4">Bộ phận</div>
       <div class="col-sm-1">|</div>
-      <div class="col-sm-7 td-ellip">HCNS</div>
+      <div class="col-sm-7 td-ellip">{{boPhan}}</div>
     </div>
     <hr>
     <div class="row">
       <div class="col-sm-4">Chức vụ</div>
       <div class="col-sm-1">|</div>
-      <div class="col-sm-7 td-ellip">Nhân viên IT</div>
+      <div class="col-sm-7 td-ellip">{{chucVu}}</div>
     </div>
     <hr>
     <div class="row">
       <div class="col-sm-4">Ngày bắt đầu</div>
       <div class="col-sm-1">|</div>
-      <div class="col-sm-7 td-ellip">01/07/2018</div>
+      <div class="col-sm-7 td-ellip">{{ngayBD | date: 'dd-MM-yyyy'}}</div>
     </div>
     <hr>
     <div class="row">
       <div class="col-sm-4">Trạng thái</div>
       <div class="col-sm-1">|</div>
-      <div class="col-sm-7 td-ellip">Đang làm việc</div>
+      <div class="col-sm-7 td-ellip">{{trangThai}}</div>
     </div>
   </div>
   <div class="col-lg-8">
@@ -122,8 +125,8 @@
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-select placeholder="Dân tộc" formControlName='ethnic'>
-                  <mat-option *ngFor="let et of lstEthnic" [value]="et.code">
-                    {{et.value}}
+                  <mat-option *ngFor="let et of lstEthnic" [value]="et.EthnicCode">
+                    {{et.EthnicName}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -133,8 +136,8 @@
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-select placeholder="Nơi cấp" formControlName='noicap'>
-                  <mat-option *ngFor="let nc of lstNoiCap" [value]="nc.code">
-                    {{nc.value}}
+                  <mat-option *ngFor="let nc of lstNoiCap" [value]="nc.ProvinceCode">
+                    {{nc.ProvinceName}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -160,8 +163,8 @@
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-select placeholder="Quốc tịch" formControlName='nationality'>
-                  <mat-option *ngFor="let na of lstNationality" [value]="na.code">
-                    {{na.value}}
+                  <mat-option *ngFor="let na of lstNation" [value]="na.NationCode">
+                    {{na.NationName}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -192,14 +195,14 @@
                   </tr>
                  </thead>
                  <tbody>
-                  <tr>
-                    <th>1</th>
-                    <td>Đại Học Công Nghệ Sài Gòn</td>
-                    <td>Đại Học</td>
-                    <td>CNTT</td>
-                    <td>Phần mềm</td>
-                    <td>2012</td>
-                    <td>Khá</td>
+                  <tr *ngFor="let degree of lstDegree; let i = index">
+                    <th>{{i}}</th>
+                    <td>{{degree.DegreePlace}}</td>
+                    <td>{{degree.DegreeName}}</td>
+                    <td>{{degree.DegreeDept}}</td>
+                    <td>{{degree.DegreeMajor}}</td>
+                    <td>{{degree.DegreeDate | date:'yyyy'}}</td>
+                    <td>{{degree.DegreeRank}}</td>
                     <td>
                         <div class="card-header-actions btn btn-link" style="padding: 0px; height: 24px" (click)="UpdateDegree()"><i class="material-icons">create</i></div>
                         <div class="card-header-actions btn btn-link" style="padding: 0px; height: 24px"><i class="material-icons">delete_outline</i></div>
@@ -212,5 +215,4 @@
       </form>
     </div>
   </div>
-
 </div>

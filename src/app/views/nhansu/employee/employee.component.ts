@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridNg2 } from 'ag-grid-angular';
-import { EmployeeService } from './employee.service';
-import {Router} from '@angular/router';
+import { GetProvider } from '../../../../provider/get/get';
+import { NgxNavigationWithDataComponent } from "ngx-navigation-with-data";
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss'],
-  providers: [EmployeeService]
+  styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
   @ViewChild('agGrid') agGrid: AgGridNg2;
@@ -25,14 +24,14 @@ export class EmployeeComponent implements OnInit {
   rowData : any;
   lstEmps : any;
   constructor(
-    private serEmployee:EmployeeService,
-    private router: Router
+    private getProvider:GetProvider,
+    public navCtrl: NgxNavigationWithDataComponent
   ){}
 
   ngOnInit() {
     this.rowData = [];
     let dataEmp = [];
-    this.serEmployee.getEmployees()
+    this.getProvider.getEmployees()
     .then(res => {
       if(res){
         this.lstEmps = res;
@@ -53,6 +52,6 @@ export class EmployeeComponent implements OnInit {
   }
   
   onrowDoubleClicked(event) {
-    this.router.navigate(['nhansu/emptail',{data:event.data}]);
+   this.navCtrl.navigate('nhansu/emptail', {data:event.data});
   }
 }

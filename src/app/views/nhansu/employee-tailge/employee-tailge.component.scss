@@ -22,3 +22,10 @@ th {
 thead th {
     vertical-align: middle;
 }
+.img-icon{
+    cursor: pointer;
+   opacity: 0.2;
+}
+.img-icon:hover {
+    opacity: 1;
+ }

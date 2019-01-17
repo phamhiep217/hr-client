@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeeService} from '../employee/employee.service'
-import {ActivatedRoute} from '@angular/router'
+import { NgxNavigationWithDataComponent } from 'ngx-navigation-with-data';
 @Component({
   selector: 'app-employee-tail',
   templateUrl: './employee-tail.component.html',
@@ -9,11 +8,11 @@ import {ActivatedRoute} from '@angular/router'
 export class EmployeeTailComponent implements OnInit {
   objEmp : any;
   constructor(
-    private actRoute: ActivatedRoute
+    public navCtrl: NgxNavigationWithDataComponent
   ){}
 
   ngOnInit() {
-    console.log(this.actRoute.snapshot);
+    this.objEmp = this.navCtrl.get('data');
   } 
 
 }

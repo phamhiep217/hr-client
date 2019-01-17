@@ -45,7 +45,8 @@ import {AuthGuardGuard} from './auth-guard.guard';
 
 //Material Angular
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {GetProvider} from '../provider/get/get';
+import {PostProvider} from '../provider/post/post';
 
 @NgModule({
   imports: [
@@ -78,7 +79,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     useClass: HashLocationStrategy
     },
     LoginService,
-    AuthGuardGuard
+    AuthGuardGuard,
+    GetProvider,
+    PostProvider
   ],
   bootstrap: [ AppComponent ]
 })

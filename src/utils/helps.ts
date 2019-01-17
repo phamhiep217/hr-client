@@ -11,14 +11,6 @@ export class Helps {
         ]
     }
 
-    static getNoiCap() {
-        return [
-            {code:0,value:"Hà Nội"},
-            {code:1,value:"Đã Nẵng"},
-            {code:2,value:"TPHCM"}
-        ]
-    }
-
     static getMarriageStatus() {
         return [
             {code:0,value:"Độc thân"},
@@ -47,24 +39,6 @@ export class Helps {
             {code:1, value: "Đại học"},
             {code:2, value: "Cao đẳng"},
             {code:4, value: "Trung cấp"}
-        ]
-    }
-
-    static getDepartment(){
-        return [
-            {code:0, value: "Công nghệ thông tin"},
-            {code:1, value: "Quản trị kinh doanh"},
-            {code:2, value: "Cơ khí"},
-            {code:4, value: "Design"}
-        ]
-    }
-
-    static getMajor(){
-        return [
-            {code:0, value: "Phần mềm"},
-            {code:1, value: "Kế toán"},
-            {code:2, value: "Cơ khí công nghiệp"},
-            {code:4, value: "Thiết kế nội thất"}
         ]
     }
 

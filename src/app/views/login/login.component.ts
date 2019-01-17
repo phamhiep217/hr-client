@@ -4,6 +4,7 @@ import { LoginService } from './login.service';
 import {AuthGuardGuard} from '../../auth-guard.guard';
 import {Router} from '@angular/router';
 import {NavRole} from '../../_nav';
+import {PostProvider} from '../../../provider/post/post'
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'login.component.html'
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private serLogin: LoginService,
+    private postProvider: PostProvider,
     private router: Router,
     private auth: AuthGuardGuard
   ){}
@@ -32,11 +34,11 @@ export class LoginComponent implements OnInit {
       "UserName" : this.formDN.get('username').value,
       "UserPass" : this.formDN.get('password').value
     }
-    this.serLogin.checkLogin(body)
+    this.postProvider.checkLogin(body)
     .then(resJson => {
       if(resJson) {
         this.serLogin.setLogin(true);
-        this.serLogin.loadRole(body)
+        this.postProvider.loadRole(body)
         .then(res => {
           if(res)
           {

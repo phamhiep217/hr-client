@@ -18,6 +18,8 @@ import { from } from 'rxjs';
 import {DatepickerYearComponent} from './employee-tailge/datepicker-year.component';
 import { AddDegreeComponent } from './employee-tailge/add-degree/add-degree.component';
 import {EmployeeService} from './employee/employee.service';
+import { NgxNavigationWithDataComponent } from "ngx-navigation-with-data";
+
 @NgModule({
   imports: [
     NhansuRoutingModule,
@@ -47,6 +49,9 @@ import {EmployeeService} from './employee/employee.service';
     AddDegreeComponent
   ],
   entryComponents:[AddDegreeComponent],
-  providers: [EmployeeService]
+  providers: [
+    EmployeeService,
+    NgxNavigationWithDataComponent
+  ]
 })
 export class NhansuModule { }

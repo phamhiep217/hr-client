@@ -27,6 +27,8 @@ export class EmployeeTailgeComponent implements OnInit {
   lstNoiCap: any[]; lstDepartment: any[]; lstPosition: any[];
   lstNation: any[]; lstEthnic: any[]; lstDegree: any[];
   maCC; tenCC; boPhan; chucVu; ngayBD; trangThai: string;
+  imgUrl : string = "assets/img/avatars/non-avatar.png";
+  fileToUpload: File = null;
   constructor(
     private service: EmployeeService,
     private fb: FormBuilder,
@@ -169,8 +171,25 @@ export class EmployeeTailgeComponent implements OnInit {
     });
   }
 
-  changeImg(){
-    console.log('adbdd');
+  onFileChanged(event){
+    this.fileToUpload = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = (event:any) => {
+      this.imgUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
+  }
+
+  updateEmp() {
+    if(this.dataEmp){
+      let body = {
+        
+      }
+    }
+  }
+
+  addEmployee() {
+    
   }
 
 }

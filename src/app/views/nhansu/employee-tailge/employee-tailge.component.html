@@ -1,8 +1,13 @@
 <div class="row ge-content">
   <div class="col-lg-4 center-content">
     <div>
-      <img src="assets/img/avatars/non-avatar.png" class="img-responsive center-block" width="200" height="200" />
-      <span style="position:relative; right:36px; bottom:-90px;" class="img-icon" (click)="changeImg();"><i class="icon-picture fa-2x" ></i></span>
+      <img [src]="imgUrl" class="img-responsive center-block" width="200" height="200" />
+      <input 
+      style="display: none" 
+      type="file" (change)="onFileChanged($event)" 
+      accept="image/*"
+      #fileInput>
+      <span type="file" style="position:relative; right:36px; bottom:-90px;" class="img-icon" (click)="fileInput.click()"><i class="icon-picture fa-2x" ></i></span>
     </div>
     <p></p>
     <div class="row">
@@ -40,15 +45,18 @@
       <div class="col-sm-1">|</div>
       <div class="col-sm-7 td-ellip">{{trangThai}}</div>
     </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-12" style="text-align: right;" >
+        <button class="btn btn-pill btn-primary" type="button" (click)="updateEmp()"><i class="fa fa-floppy-o"></i>&nbsp;Lưu</button>
+      </div>
+    </div>
   </div>
   <div class="col-lg-8">
     <div class="card">
       <form (ngSubmit)="onPerson();" [formGroup]="formPerson">
         <div class="card-header">
           Thông tin cá nhân
-          <div class="card-header-actions">
-            <button class="card-header-actions btn btn-link" style="padding: 0px;"><i class="material-icons">save_alt</i></button>
-          </div>
         </div>
         <div class="card-body">
           <div class="row">
@@ -91,9 +99,6 @@
             </div>
             <div class="col-sm-6">
               Thông tin công dân
-              <div class="card-header-actions">
-                <button class="card-header-actions btn btn-link" style="padding: 0px; height: 24px"><i class="material-icons">save_alt</i></button>
-              </div>
             </div>
           </div>
         </div>

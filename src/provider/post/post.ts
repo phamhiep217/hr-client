@@ -27,4 +27,8 @@ export class PostProvider {
         return this.postWrapper(`/users/loadrole`, body);
     }
 
+    updateEmp(id,body) {
+        return this.postWrapper(`/api/Emps/`+id,body);
+    }
+
 }
